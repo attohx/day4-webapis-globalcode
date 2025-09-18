@@ -7,7 +7,7 @@ load_dotenv()
 
 api_key = os.getenv("API_KEY")
 
-def weather_grabber():
+def weather_grabber(location):
     try: 
 
         owm = OWM(api_key)
@@ -40,4 +40,9 @@ def weather_grabber():
         print(f"An unexpected error occurred: {e}. Please try again later.")
 
 location = str(input('Where are you located?: '))
-weather_grabber()
+
+if not location:
+    print("Location cant be empty. Please try again!")
+else:
+    weather_grabber(location)
+    
