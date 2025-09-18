@@ -1,10 +1,14 @@
+from dotenv import load_dotenv
+import os
 from pyowm.owm import OWM
+
+load_dotenv()
+
+api_key = os.getenv("API_KEY")
 
 location = str(input('Where are you located?: '))
 
-API_KEY = "b92d4df77ac6623f9144d0f0d72d4630"
-
-owm = OWM(API_KEY)
+owm = OWM(api_key)
 mgr = owm.weather_manager()
 
 observation = mgr.weather_at_place(location)
